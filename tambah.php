@@ -1,17 +1,13 @@
 <?php
-//connect ke DBMS
-$conn = mysqli_connect("localhost", "root", "", "phpdasar");
-
-//cek submit sudah ditekan aatu belum
+require 'functions.php';
+//cek submit sudah ditekan atau belum
 if( isset($_POST["submit"])) {
-    $nama = $_POST["nama"];
-    $nim = $_POST["nim"];
-    $email = $_POST["email"];
-    $jurusan = $_POST["jurusan"];
-    $gambar = $_POST["gambar"];
-
-    $query = "INSERT INTO mahasiswa values('', '$nama', '$nim','$email', '$jurusan', '$gambar')";
-    mysqli_query($conn, "$query");
+    //cek data berhasil ditambahkan atau tidak
+    if( tambah($_POST) > 0) {
+        echo "Data Berhasil Ditambahkan!";
+    } else {
+        echo "Data Gagal Ditambahkan!";
+    }
 }
 
 ?>
